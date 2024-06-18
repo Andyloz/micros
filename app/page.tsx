@@ -10,14 +10,15 @@ export default async function Page() {
   const thisWeekShifts = await Shifts.getThisWeek()
 
   return (
-    <main className='px-3 py-6'>
+    <main className='px-3 pb-10'>
 
       <Header />
 
       <h3 className='mb-4 text-lg uppercase text-gray-600 tracking-widest'>Esta semana · {thisMondayF}</h3>
+
       <section className='mx-4 flex flex-wrap justify-center gap-2'>
         {thisWeekShifts.length === 0 &&
-          <p className='italic text-gray-700 text-sm bg-gray-200 flex-grow text-center px-4 py-2 rounded'>
+          <p className='max-w-xl italic text-gray-700 text-sm bg-gray-200 flex-grow text-center p-4 rounded'>
             No hay turnos esta semana
           </p>
         }

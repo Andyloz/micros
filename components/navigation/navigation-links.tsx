@@ -1,27 +1,16 @@
-import { clsx } from 'clsx'
 import TableCells from '@/components/icons/table-cells'
 import Users from '@/components/icons/users'
 import BellAlert from '@/components/icons/bell-alert'
 import { FC, ReactNode, SVGProps } from 'react'
 
-export default function Navigation() {
-  return <nav className={clsx(
-    'grid [@media(width<850px)]:flex-[100%]',
-    'ease-in [transition:all_150ms,opacity_500ms]',
-    '[@media(width<850px)]:grid-rows-[0fr] [.open+&]:grid-rows-[1fr]',
-    '[@media(width<850px)]:opacity-0 [.open+&]:opacity-100',
-    '[@media(width<850px)]:px-4 [@media(width<850px)]:[.open+&]:py-8',
-  )}>
-    <ul className={clsx(
-      'overflow-hidden flex gap-3',
-      '[@media(width<550px)]:flex-col',
-      '[@media(550px<=width)]:flex-wrap',
-    )}>
+export default function NavigationLinks() {
+  return (
+    <>
       <li><NavButton Icon={TableCells}>Ver todos los horarios</NavButton></li>
       <li><NavButton Icon={Users}>Lista de hermanos</NavButton></li>
       <li><NavButton Icon={BellAlert}>Gestionar avisos</NavButton></li>
-    </ul>
-  </nav>
+    </>
+  )
 }
 
 function NavButton({ children, Icon }: { children: ReactNode, Icon: FC<SVGProps<SVGSVGElement>> }) {
