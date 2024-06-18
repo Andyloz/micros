@@ -1,0 +1,176 @@
+{
+  "version": "5",
+  "dialect": "mysql",
+  "id": "5adf8587-d157-4883-b116-7b011189dd53",
+  "prevId": "00000000-0000-0000-0000-000000000000",
+  "tables": {
+    "brothers": {
+      "name": "brothers",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "int unsigned",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "name": {
+          "name": "name",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {
+        "brothers_id": {
+          "name": "brothers_id",
+          "columns": [
+            "id"
+          ]
+        }
+      },
+      "uniqueConstraints": {}
+    },
+    "brothers_shifts": {
+      "name": "brothers_shifts",
+      "columns": {
+        "brother_id": {
+          "name": "brother_id",
+          "type": "int unsigned",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "shift_date": {
+          "name": "shift_date",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "shift_version": {
+          "name": "shift_version",
+          "type": "int unsigned",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "brothers_shifts_brother_id_brothers_id_fk": {
+          "name": "brothers_shifts_brother_id_brothers_id_fk",
+          "tableFrom": "brothers_shifts",
+          "tableTo": "brothers",
+          "columnsFrom": [
+            "brother_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "brothers_shifts_shift_date_shift_version_shifts_date_version_fk": {
+          "name": "brothers_shifts_shift_date_shift_version_shifts_date_version_fk",
+          "tableFrom": "brothers_shifts",
+          "tableTo": "shifts",
+          "columnsFrom": [
+            "shift_date",
+            "shift_version"
+          ],
+          "columnsTo": [
+            "date",
+            "version"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {
+        "brothers_shifts_brother_id_shift_date_shift_version_pk": {
+          "name": "brothers_shifts_brother_id_shift_date_shift_version_pk",
+          "columns": [
+            "brother_id",
+            "shift_date",
+            "shift_version"
+          ]
+        }
+      },
+      "uniqueConstraints": {}
+    },
+    "shifts": {
+      "name": "shifts",
+      "columns": {
+        "date": {
+          "name": "date",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "version": {
+          "name": "version",
+          "type": "int unsigned",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": 1
+        },
+        "week_date": {
+          "name": "week_date",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "type": {
+          "name": "type",
+          "type": "enum('midweek','weekend','other')",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "description": {
+          "name": "description",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        }
+      },
+      "indexes": {
+        "week_date_idx": {
+          "name": "week_date_idx",
+          "columns": [
+            "week_date"
+          ],
+          "isUnique": false
+        }
+      },
+      "foreignKeys": {},
+      "compositePrimaryKeys": {
+        "shifts_date_version_pk": {
+          "name": "shifts_date_version_pk",
+          "columns": [
+            "date",
+            "version"
+          ]
+        }
+      },
+      "uniqueConstraints": {}
+    }
+  },
+  "_meta": {
+    "schemas": {},
+    "tables": {},
+    "columns": {}
+  },
+  "internal": {
+    "tables": {},
+    "indexes": {}
+  }
+}

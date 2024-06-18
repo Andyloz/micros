@@ -1,0 +1,20 @@
+{
+  "version": "7",
+  "dialect": "mysql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1718361041639,
+      "tag": "0000_damp_excalibur",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1718555525767,
+      "tag": "0001_shifts_add_is_last_version",
+      "breakpoints": true
+    }
+  ]
+}
